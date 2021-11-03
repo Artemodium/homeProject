@@ -1,0 +1,10 @@
+.App-navbar {
+  background: gold;
+  display: grid;
+  grid-area: n;
+  height: 500px;
+}
+
+
+
+

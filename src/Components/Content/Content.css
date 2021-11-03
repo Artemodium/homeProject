@@ -1,0 +1,10 @@
+.App-content {
+  background: lightseagreen;
+  display: grid;
+  grid-area: c;
+  height: 500px;
+}
+
+
+
+
