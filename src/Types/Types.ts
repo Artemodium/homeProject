@@ -1,4 +1,4 @@
-import { GET_EXCHANGE_RATES, GET_CURRENCY_NAMES } from '../redux_store/Actions/actions'
+import { GET_EXCHANGE_RATES, GET_CURRENCY_NAMES, SET_OPTION } from '../redux_store/Actions/actions'
 
 //API Types
 export interface CurrencyRatesType {
@@ -7,6 +7,10 @@ export interface CurrencyRatesType {
 }
 
 export interface CurrencyNamesType {
+    [key: string]: string
+}
+
+export type CountryToCurrencyType = {
     key: string,
     value: string
 }
@@ -24,6 +28,10 @@ export type ApiCurrencyNamesResponseType = {
     symbols: Array<CurrencyNamesType>
 }
 
+export type ApiCurrencyToCountryType = {
+    arr: Array<CurrencyNamesType>
+}
+
 //ActionCreator types
 export type GetCurrencyNamesType = {
     type: typeof GET_CURRENCY_NAMES,
@@ -33,4 +41,21 @@ export type GetCurrencyNamesType = {
 export type GetCurrencyRatesType = {
     type: typeof GET_EXCHANGE_RATES,
     res: Array<CurrencyRatesType>
+}
+
+export type SetOptionType = {
+    type: typeof SET_OPTION,
+    value: string | undefined
+}
+
+export type SelectorType = {
+    currencyNames: CurrencyNamesType,
+    isExchangeRates: boolean,
+    iscurrencyNames: boolean,
+    changeSelect: (value: string) => void,
+}
+
+export type ContainerPropsType = {
+    currencyNames: CurrencyNamesType,
+    option: string,
 }

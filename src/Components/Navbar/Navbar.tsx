@@ -1,5 +1,7 @@
 import React from 'react';
 import './Navbar.css';
+import Selector from './Selector/Selector';
+import SelectorContainer from './Selector/SelectorContainer';
 
 
 function Navbar() {
@@ -7,9 +9,7 @@ function Navbar() {
     <div className="App-navbar">
         <h1>Navbar</h1>
         <div>
-            <select>
-                <option>Option 1</option>
-            </select>
+            <SelectorContainer />
         </div>
     </div>
   );
