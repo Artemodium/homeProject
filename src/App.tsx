@@ -4,28 +4,21 @@ import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import Content from "./Components/Content/Content";
 import Footer from "./Components/Footer/Footer";
-import {getCurrencyNames, getExchangeRates, getCountryToCurrencyJSON} from './redux_store/Reducers/startAppReducer';
+import {getCurrencyNames, getExchangeRates} from './redux_store/Reducers/startAppReducer';
 import store, { AppStateType } from './redux_store/store';
+import { AppPropsType } from './Types/Types'
 import { compose } from 'redux';
 import {connect, Provider} from "react-redux";
 import {BrowserRouter, withRouter} from 'react-router-dom';
 
-type PropsType = {
-    getCurrencyNames: () => void,
-    getExchangeRates: () => void,
-    getCountryToCurrencyJSON: () => void
-}
-
-class App extends Component<PropsType> {
+class App extends Component<AppPropsType> {
 
    componentDidMount() {
         this.props.getExchangeRates()
         this.props.getCurrencyNames()
-        this.props.getCountryToCurrencyJSON()
     }
-
+        
     render() {
-      
         return (
             <div className="App">
                 <Header/>
@@ -38,12 +31,12 @@ class App extends Component<PropsType> {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    currencyList: state.startApp.currencyNames
+    
 })
 
 const AppContainer: any = compose(
     withRouter,
-    connect(mapStateToProps, {getCurrencyNames, getExchangeRates, getCountryToCurrencyJSON}))(App);
+    connect(mapStateToProps, {getCurrencyNames, getExchangeRates}))(App);
 
 const StartApp = () => {
     return (

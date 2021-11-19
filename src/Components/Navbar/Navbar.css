@@ -2,7 +2,9 @@
   background: gold;
   display: grid;
   grid-area: n;
-  height: 500px;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 

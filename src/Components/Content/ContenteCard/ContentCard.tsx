@@ -1,32 +1,33 @@
 import React from 'react';
-import { CurrencyNamesType } from '../../../Types/Types';
+import { ContentCardPropsType } from '../../../Types/Types';
 import './ContentCard.css';
-
-type ContentCardPropsType = {
-    findLittleCurrencyName: (obj: CurrencyNamesType, value: string) => string | null
-    option: string
-    currencyNames: CurrencyNamesType
-}
-
 
 let ContentCard: React.FC<ContentCardPropsType> = (props: ContentCardPropsType) => {
 
-    let currencyName: string | null = props.findLittleCurrencyName(props.currencyNames, props.option)
-    console.log('aaaa ', currencyName)
+    let currencyName: string | null = props.find(props.currencyNames, props.option)
+    currencyName = currencyName ? currencyName : ''
 
-  return (
-    <div>
-      <div>
-        <img src={`https://flagcdn.com/224x168/$ae.png`} alt=''/>
-      </div>
-        <div>
-            <span>LittleNameCurrency: {currencyName ? currencyName.toLowerCase(): ''} </span>
+    let countryName: string | null = props.find(props.countryToCurrency, currencyName ? currencyName : '')
+    countryName = countryName ? countryName.toLowerCase() : ''
+
+    return (
+        <div className = 'ContentCard'>
+            { props.option === '' ? <div></div> :
+                <div>
+                    <div>
+                        <img src={`https://flagcdn.com/224x168/${countryName}.png`} alt=''/>
+                    </div>
+                    <br/>
+                    <div>
+                        <span>Currency name: {currencyName} </span>
+                    </div>
+                    <div>
+                        <span>Currency exchange rate: {props.exchangeRates[currencyName]}</span>
+                    </div>
+                </div>
+            }
         </div>
-      <div>
-        <span>Rate: </span>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default ContentCard;

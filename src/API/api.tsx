@@ -1,24 +1,20 @@
 import axios from "axios";
-import { ApiCurrencyNamesResponseType, ApiCurrencyRatesResponseType } from "../Types/Types";
+import { ApiCurrencyRatesResponseType } from "../Types/Types";
 
 // DATA-FIXER API
 const axiosInstRatesAndSymbols = axios.create({
     withCredentials: false,
     baseURL: 'http://data.fixer.io/api/',
 })
+
 const apiKey:string = "68cf59f9ae876060f7949852ca8556eb"
 
-export const latestApi = () => {
+export const latestApi = (): Promise<ApiCurrencyRatesResponseType> => {
     return axiosInstRatesAndSymbols.get<ApiCurrencyRatesResponseType>(`latest?access_key=${apiKey}`)
         .then(res => { return res.data } )
 }
 
-export const symbolsApi = () => {
-    return axiosInstRatesAndSymbols.get<ApiCurrencyNamesResponseType>(`symbols?access_key=${apiKey}`)
-        .then(res => { return res.data} )
-}
-
-export const countryToCurrencyJsonApi = () => {
-    return axios.get('http://country.io/currency.json')
-        .then(res => {return res})
+export const symbolsApi = (): Promise<ApiCurrencyRatesResponseType> => {
+    return axiosInstRatesAndSymbols.get<ApiCurrencyRatesResponseType>(`symbols?access_key=${apiKey}`)
+        .then(res => { return res.data } )
 }

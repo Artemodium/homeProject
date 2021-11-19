@@ -1,7 +1,9 @@
 .App-footer {
+  padding: 5px 20px;
   background: #e1ffb8;
   display: grid;
   grid-area: f;
+  width: 100%;
 }
 
 

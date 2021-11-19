@@ -1,61 +1,74 @@
-import { GET_EXCHANGE_RATES, GET_CURRENCY_NAMES, SET_OPTION } from '../redux_store/Actions/actions'
+import { ChangeEvent } from 'react'
+import { GET_EXCHANGE_RATES, GET_CURRENCY_NAMES, SET_OPTION, SET_CONNECTION_PROBLEMS } from '../redux_store/Actions/actions'
 
-//API Types
-export interface CurrencyRatesType {
-    key: string,
-    value: number
-}
-
-export interface CurrencyNamesType {
+        //API Types
+export interface CommonType {
     [key: string]: string
 }
 
-export type CountryToCurrencyType = {
-    key: string,
-    value: string
-}
-
 export type ApiCurrencyRatesResponseType = {
+    success: boolean
+    timestamp?: number
+    base?: string
+    date?: string
+    rates?: Array<CommonType>
+    symbols?: Array<CommonType>
+    error?: {
+        code: number
+        type: string
+        info:string
+    }
+}
+
+/*export type ApiCurrencyNamesResponseType = {
     success: boolean,
-    timestamp: number,
-    base: string,
-    date: string
-    rates: Array<CurrencyRatesType>
+    symbols: Array<CommonType>
 }
 
-export type ApiCurrencyNamesResponseType = {
-    success: boolean,
-    symbols: Array<CurrencyNamesType>
-}
+export type ConnectionsProblemsType = {
+    success:
+}*/
 
-export type ApiCurrencyToCountryType = {
-    arr: Array<CurrencyNamesType>
-}
-
-//ActionCreator types
+     //ActionCreator types
 export type GetCurrencyNamesType = {
     type: typeof GET_CURRENCY_NAMES,
-    res: Array<CurrencyNamesType>
+    res: Array<CommonType>
 }
 
 export type GetCurrencyRatesType = {
     type: typeof GET_EXCHANGE_RATES,
-    res: Array<CurrencyRatesType>
+    res: Array<CommonType>
 }
 
 export type SetOptionType = {
     type: typeof SET_OPTION,
-    value: string | undefined
+    value: string
 }
 
-export type SelectorType = {
-    currencyNames: CurrencyNamesType,
+export type SetConnectionsProblemsType = {
+    type: typeof SET_CONNECTION_PROBLEMS,
+    value: boolean
+}
+
+export type ActionsType = GetCurrencyNamesType | GetCurrencyRatesType | SetOptionType | SetConnectionsProblemsType
+
+        //PROPS TYPES
+export type AppPropsType = {
+    getCurrencyNames: () => void,
+    getExchangeRates: () => void,
+}
+
+export type SelectorPropsType = {
+    currencyNames: CommonType,
     isExchangeRates: boolean,
     iscurrencyNames: boolean,
-    changeSelect: (value: string) => void,
+    selectChange: (value: ChangeEvent<HTMLSelectElement>) => void,
 }
 
-export type ContainerPropsType = {
-    currencyNames: CurrencyNamesType,
-    option: string,
+export type ContentCardPropsType = {
+    find: (obj: CommonType, value: string) => string | null
+    option: string
+    currencyNames: CommonType
+    countryToCurrency: CommonType
+    exchangeRates: CommonType
 }

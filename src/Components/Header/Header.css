@@ -1,6 +1,7 @@
 .App-header {
+  padding: 5px 20px;
   background: #e1ffb8;
-  width: 1200px;
+  width: 100%;
   display: grid;
   grid-area: h;
 }

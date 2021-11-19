@@ -1,10 +1,12 @@
-.App-content {
+.ContentCard {
+  padding: 10px;
+  border: double 0px;
   background: lightseagreen;
-  display: grid;
-  grid-area: c;
-  height: 500px;
+  height: 250px;
+  width: 250px;
+  display: table-cell;
+  vertical-align: middle;
 }
-
 
 
 
