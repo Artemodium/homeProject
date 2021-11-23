@@ -7,14 +7,19 @@ https://flagpedia.net/download/api флаги стран
 Сборочный скрипт должен собирать упакованное приложение под Electron.
     
 Сборка проекта производится двумя командами:
-   npm run build
-   npm run build-electron
+
+    npm run build
+   
+    npm run build-electron
 
 Запуск проекта для разработки производится двумя командами:
+
     npm start
+    
     npm run electron-dev
 
 Сборка проекта:
+
     npm run package
 
 
