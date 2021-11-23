@@ -12,7 +12,7 @@ let ContentCard: React.FC<ContentCardPropsType> = (props: ContentCardPropsType) 
 
     return (
         <div className = 'ContentCard'>
-            { props.option === '' ? <div></div> :
+            { props.option === '' || props.option === '...' ? <div></div> :
                 <div>
                     <div>
                         <img src={`https://flagcdn.com/224x168/${countryName}.png`} alt=''/>

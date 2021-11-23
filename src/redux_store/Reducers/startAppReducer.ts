@@ -6,8 +6,9 @@ import { GET_CURRENCY_NAMES, GET_EXCHANGE_RATES, SET_OPTION, SET_CONNECTION_PROB
 import { ThunkAction } from 'redux-thunk'
 
 const initialState = {
+    error: '',
     option: '',
-    isConnectionsProblems: false,
+    isConnectionProblems: true,
     isExchangeRates: false,
     isCurrencyNames: false,
     currencyNames: {},
@@ -290,7 +291,8 @@ const startAppReducer = (state: InitialStateType = initialState, action: Actions
         case SET_CONNECTION_PROBLEMS:
             return {
                 ...state,
-                isConnectionsProblems: action.value
+                error: action.error,
+                isConnectionProblems: action.value
             }
 
         default:
@@ -304,19 +306,19 @@ export const getCurrencyNames = (): ThunkAction<Promise<void>, AppStateType, unk
         if(response.success && response.symbols) {
             dispatch(getCurrencyNamesAC(response.symbols))
         }
-        else {
-            dispatch(setConnectionsProblemsAC(true))
-        }
+        else if(response.error) {
+            dispatch(setConnectionsProblemsAC(false, response.error.type))
+        } 
 }
 
 export const getExchangeRates = (): ThunkAction<Promise<void>, AppStateType, unknown, ActionsType> =>
     async (dispatch) => {
     let response = await latestApi()
         if(response.success && response.rates) {
-            dispatch(getCurrencyNamesAC(response.rates))
+            dispatch(getExchangeRatesAC(response.rates))
         }
-        else {
-            dispatch(setConnectionsProblemsAC(true))
+        else if(response.error) {
+            dispatch(setConnectionsProblemsAC(false, response.error.type))
         }
 }
 

@@ -2,7 +2,7 @@
   background: gold;
   display: grid;
   grid-area: n;
-  height: auto;
+  height: 100%;
   display: flex;
   align-items: center;
 }

@@ -47,7 +47,8 @@ export type SetOptionType = {
 
 export type SetConnectionsProblemsType = {
     type: typeof SET_CONNECTION_PROBLEMS,
-    value: boolean
+    value: boolean,
+    error: string
 }
 
 export type ActionsType = GetCurrencyNamesType | GetCurrencyRatesType | SetOptionType | SetConnectionsProblemsType
@@ -61,7 +62,9 @@ export type AppPropsType = {
 export type SelectorPropsType = {
     currencyNames: CommonType,
     isExchangeRates: boolean,
-    iscurrencyNames: boolean,
+    isCurrencyNames: boolean,
+    isConnectionProblems: boolean,
+    error:string,
     selectChange: (value: ChangeEvent<HTMLSelectElement>) => void,
 }
 

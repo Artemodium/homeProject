@@ -3,6 +3,6 @@
   margin: 0 auto;
   display: grid;
   grid-template-areas: "h h" "n c" "f f";
-  grid-template-rows: 80px 2fr;
+  grid-template-rows: 80px 10fr 80px;
   grid-template-columns: 3fr 9fr;
 }

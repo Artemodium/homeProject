@@ -17,7 +17,8 @@ export const setOptionAC = (value: string): SetOptionType => ({
     value: value
 })
 
-export const setConnectionsProblemsAC = (value: boolean): SetConnectionsProblemsType => ({
+export const setConnectionsProblemsAC = (value: boolean, error: string): SetConnectionsProblemsType => ({
     type: SET_CONNECTION_PROBLEMS,
-    value: true
+    value: false,
+    error: error
 })

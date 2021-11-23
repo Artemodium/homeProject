@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className="App-navbar">
         <div>
-            <SelectorContainer />
+                <SelectorContainer/>
         </div>
     </div>
   );

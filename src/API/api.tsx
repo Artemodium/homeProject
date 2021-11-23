@@ -7,7 +7,7 @@ const axiosInstRatesAndSymbols = axios.create({
     baseURL: 'http://data.fixer.io/api/',
 })
 
-const apiKey:string = "68cf59f9ae876060f7949852ca8556eb"
+const apiKey:string = "a977e005d74663a0b9086898849d3545"
 
 export const latestApi = (): Promise<ApiCurrencyRatesResponseType> => {
     return axiosInstRatesAndSymbols.get<ApiCurrencyRatesResponseType>(`latest?access_key=${apiKey}`)

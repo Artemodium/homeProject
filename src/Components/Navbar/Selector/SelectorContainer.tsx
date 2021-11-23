@@ -7,7 +7,9 @@ let mapStateToProps = (state: AppStateType) => {
     return {
         currencyNames: state.startApp.currencyNames,
         isExchangeRates: state.startApp.isExchangeRates,
-        iscurrencyNames: state.startApp.isCurrencyNames,
+        isCurrencyNames: state.startApp.isCurrencyNames,
+        isConnectionProblems: state.startApp.isConnectionProblems,
+        error: state.startApp.error
     }
 }
 
